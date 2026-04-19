@@ -1,12 +1,23 @@
+import { Card, CardContent, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function FoodCard({ product }) {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`/product/${product.code}`)} className="card">
-      <h3>{product.product_name || "No Name"}</h3>
-      <p>{product.brands}</p>
-    </div>
+    <Card
+      sx={{ margin: 1, cursor: "pointer" }}
+      onClick={() => navigate(`/product/${product.code}`)}
+    >
+      <CardContent>
+        <Typography variant="h6">
+          {product.product_name || "No Name"}
+        </Typography>
+
+        <Typography color="text.secondary">
+          {product.brands || "Unknown"}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }

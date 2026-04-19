@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
+import { useState } from "react";
+import { TextField, Button } from "@mui/material";
 
-function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState('')
+export default function SearchBar({ onSearch }) {
+  const [query, setQuery] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    onSearch(query)
-  }
+    e.preventDefault();
+    onSearch(query);
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="search-bar">
-      <input
-        type="text"
+    <form onSubmit={handleSubmit} style={{ margin: "20px" }}>
+      <TextField
+        label="Search food"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for food..."
       />
-      <button type="submit">Search</button>
+      <Button type="submit" variant="contained" sx={{ ml: 2 }}>
+        Search
+      </Button>
     </form>
-  )
+  );
 }
-
-export default SearchBar

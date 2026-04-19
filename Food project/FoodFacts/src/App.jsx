@@ -4,6 +4,8 @@ import HomePage from "./pages/HomePage";
 import DetailPage from "./pages/DetailPage";
 import SavedPage from "./pages/SavedPage";
 import NavBar from "./components/NavBar";
+ feature/foodfacts-part3
+
 
 function reducer(state, action) {
   switch (action.type) {
@@ -21,24 +23,17 @@ function reducer(state, action) {
 
 function App() {
   const [saved, dispatch] = useReducer(reducer, []);
+ main
 
+export default function App() {
   return (
-    <div>
-      <NavBar count={saved.length} />
-
+    <>
+      <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route
-          path="/product/:barcode"
-          element={<DetailPage saved={saved} dispatch={dispatch} />}
-        />
-        <Route
-          path="/saved"
-          element={<SavedPage saved={saved} dispatch={dispatch} />}
-        />
+        <Route path="/product/:barcode" element={<DetailPage />} />
+        <Route path="/saved" element={<SavedPage />} />
       </Routes>
-    </div>
+    </>
   );
 }
-
-export default App;
